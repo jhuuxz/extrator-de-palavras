@@ -1,0 +1,29 @@
+const botaoMostraPalavras = document.querySelector('#botao-palavrachave');
+
+botaoMostraPalavras.addEventListener('click', destacaPalavrasChave);
+
+function destacaPalavrasChave() {
+     const texto = document.querySelector('#entrada-de-texto').value;
+    const campoResultado = document.querySelector('#indicador-palavrachave');
+    const palavrasChave = analisatexto("texto");
+
+    campoResultado.textContent=palavrasChave.join(", ");
+}
+
+function analisaTexto(texto){
+    let palavras = texto.split(/\P{L}+/u);
+
+    let frequencias = {};
+    for(let i of palavras){
+        frequencias[i] = 0;
+        for(let j of palavras){
+            if (i==j){
+                frequencias[i]++;
+            }
+        }
+    }
+
+    console.log(frequencias);
+
+      return palavras;
+}
